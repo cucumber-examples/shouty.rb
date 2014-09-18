@@ -19,3 +19,8 @@ Feature: Hear Shout
     Given Lucy is 250 m from Sean
     When Sean shouts "50% off cheese at Sean's cheese hut"
     Then Lucy hears "50% off cheese at Sean's cheese hut"
+
+  Scenario: Lucy doesn't walk past Sean who shouts an offer
+    Given Lucy is 700 m from Sean
+    When Sean shouts "50% off cheese at Sean's cheese hut"
+    Then Lucy hears nothing

@@ -1,19 +1,30 @@
 require 'shouty'
 
 Given(/^Lucy is (\d+) m from Sean$/) do |distance|
-  shouty = Shouty.new
+  @shouty = Shouty.new
 
-  lucy = shouty.person('Lucy')
-  sean = shouty.person('Sean')
+  lucy = @shouty.person('Lucy')
+  sean = @shouty.person('Sean')
 
   lucy.location = [distance, 0]
   sean.location = [0, 0]
 end
 
-When(/^Sean shouts "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+When(/^Sean shouts "(.*?)"$/) do |message|
+  sean = @shouty.person('Sean')
+  sean.shout(message)
 end
 
-Then(/^Lucy hears "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+Then(/^Lucy hears "(.*?)"$/) do |expected_message|
+  lucy = @shouty.person('Lucy')
+  if lucy.visible_messages != [expected_message]
+    raise "Expected #{[expected_message]} but got #{lucy.visible_messages}"
+  end
+end
+
+Then(/^Lucy hears nothing$/) do
+  lucy = @shouty.person('Lucy')
+  if lucy.visible_messages != []
+    raise "Expected [] but got #{lucy.visible_messages}"
+  end
 end
