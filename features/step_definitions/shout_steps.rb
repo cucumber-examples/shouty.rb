@@ -1,12 +1,3 @@
-require 'shouty'
-
-Before do
-  shouty = Shouty.new
-
-  @lucy = shouty.person('Lucy')
-  @sean = shouty.person('Sean')
-end
-
 Given(/^Lucy is (\d+) m from Sean$/) do |distance|
   @lucy.location = [distance.to_i, 0]
   @sean.location = [0, 0]
