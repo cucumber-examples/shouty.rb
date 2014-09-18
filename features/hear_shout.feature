@@ -26,17 +26,16 @@ Feature: Hear Shout
     When Sean shouts "50% off cheese at Sean's cheese hut"
     Then Lucy hears nothing
 
-  Scenario: Lucy nearly walks away from Sean and still hears him
-    Given Lucy is 351 m from Sean
+  Scenario Outline: Lucy moving away
+    Given Lucy is <original_distance> m from Sean
     When Sean shouts "can anyone hear me?"
-    And Lucy moves another 149 m away from Sean
-    Then Lucy hears "can anyone hear me?"
+    And Lucy moves another <further_distance> m away from Sean
+    Then Lucy hears <what>
 
-  Scenario: Lucy walks away from Sean and message disappears
-    Given Lucy is 351 m from Sean
-    When Sean shouts "can anyone hear me?"
-    And Lucy moves another 150 m away from Sean
-    Then Lucy hears nothing
+    Examples:
+      | original_distance | further_distance | what                  |
+      |               351 |              149 | "can anyone hear me?" |
+      |               351 |              150 |               nothing |
 
   @focus
   Scenario: Lucy hears close shouts first
