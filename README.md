@@ -32,6 +32,11 @@ You should see:
 * Define rules
 * Create high level examples (Friends episodes)
 
+Then do this for each example to discover more examples:
+
+* Can you think of a context where the outcome would be different?
+* Are there any other outcomes we haven't thought about?
+
 ### Implement one capability. Text UI only.
 
 * Write a Cucumber Scenario for one of the examples
