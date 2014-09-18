@@ -1,3 +1,4 @@
+@foo
 Feature: Hear Shout
 
   People can shout. Other people nearby can hear it.
