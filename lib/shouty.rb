@@ -47,6 +47,6 @@ class Message
     dx = other_location[0] - @location[0]
     dy = other_location[1] - @location[1]
     distance = Math.sqrt(dx*dx + dy*dy)
-    distance < 500
+    distance <= 500
   end
 end

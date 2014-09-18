@@ -14,6 +14,7 @@ Feature: Hear Shout
   ========
 
   - Lucy the listener. Likes to shop.
+  - Sean the shouter. Shop manager.
 
   Scenario: Lucy walks past a shop with an offer on
     Given Lucy is 250 m from Sean
@@ -23,4 +24,16 @@ Feature: Hear Shout
   Scenario: Lucy doesn't walk past Sean who shouts an offer
     Given Lucy is 700 m from Sean
     When Sean shouts "50% off cheese at Sean's cheese hut"
+    Then Lucy hears nothing
+
+  Scenario: Lucy nearly walks away from Sean and still hears him
+    Given Lucy is 351 m from Sean
+    When Sean shouts "can anyone hear me?"
+    And Lucy moves another 149 m away from Sean
+    Then Lucy hears "can anyone hear me?"
+
+  Scenario: Lucy walks away from Sean and message disappears
+    Given Lucy is 351 m from Sean
+    When Sean shouts "can anyone hear me?"
+    And Lucy moves another 150 m away from Sean
     Then Lucy hears nothing
