@@ -15,7 +15,7 @@ That is, if you're attending a BDD/Cucumber course.
 * Clone this repo
 * Run `gem install bundler`
 * Run `bundle`
-* Run `cucumber`
+* Run `bundle exec cucumber`
 
 You should see:
 

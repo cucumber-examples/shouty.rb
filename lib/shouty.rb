@@ -5,7 +5,7 @@ class Shouty
   end
 
   def person(name)
-    @people[name] ||= Person.new(self, name)
+    @people[name] ||= Person.new(self)
   end
 
   def store_message(message)
@@ -22,7 +22,7 @@ end
 class Person
   attr_accessor :location
 
-  def initialize(shouty, name)
+  def initialize(shouty)
     @shouty = shouty
   end
 
@@ -37,10 +37,10 @@ class Person
 end
 
 class Message
-  attr_reader :message_text
+  attr_reader :contents
 
-  def initialize(message_text, location)
-    @message_text, @location = message_text, location
+  def initialize(contents, location)
+    @contents, @location = contents, location
   end
 
   def close_to?(other_location)
