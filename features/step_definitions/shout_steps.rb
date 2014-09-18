@@ -6,7 +6,7 @@ Given(/^Lucy is (\d+) m from Sean$/) do |distance|
   lucy = @shouty.person('Lucy')
   sean = @shouty.person('Sean')
 
-  lucy.location = [distance, 0]
+  lucy.location = [distance.to_i, 0]
   sean.location = [0, 0]
 end
 
@@ -17,8 +17,9 @@ end
 
 Then(/^Lucy hears "(.*?)"$/) do |expected_message|
   lucy = @shouty.person('Lucy')
-  if lucy.visible_messages != [expected_message]
-    raise "Expected #{[expected_message]} but got #{lucy.visible_messages}"
+  visible_message_texts = lucy.visible_messages.map { |message| message.message_text }
+  if visible_message_texts != [expected_message]
+    raise "Expected #{[expected_message]} but got #{visible_message_texts}"
   end
 end
 
