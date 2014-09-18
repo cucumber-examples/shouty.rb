@@ -12,9 +12,13 @@ class Shouty
     @messages << message
   end
 
-  def messages_close_to(location)
-    @messages.select do |message|
-      message.close_to?(location)
+  def messages_close_to(person_location)
+    close_messages = @messages.select do |message|
+      message.close_to?(person_location)
+    end
+
+    close_messages.sort do |m1, m2|
+      m1.distance(person_location) <=> m2.distance(person_location)
     end
   end
 end
@@ -44,9 +48,12 @@ class Message
   end
 
   def close_to?(other_location)
+    distance(other_location) <= 500
+  end
+
+  def distance(other_location)
     dx = other_location[0] - @location[0]
     dy = other_location[1] - @location[1]
-    distance = Math.sqrt(dx*dx + dy*dy)
-    distance <= 500
+    Math.sqrt(dx*dx + dy*dy)
   end
 end

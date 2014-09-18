@@ -37,3 +37,13 @@ Feature: Hear Shout
     When Sean shouts "can anyone hear me?"
     And Lucy moves another 150 m away from Sean
     Then Lucy hears nothing
+
+  @focus
+  Scenario: Lucy hears close shouts first
+    Given Sean is 250 m from Lucy
+    And Shirley is 100 m from Lucy
+    When Sean shouts "I'm Sean"
+    And Shirley shouts "I'm Shirley"
+    Then Lucy hears:
+      | I'm Shirley |
+      | I'm Sean    |
