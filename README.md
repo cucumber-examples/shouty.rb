@@ -9,10 +9,23 @@ That is, if you're attending a BDD/Cucumber course.
 
 ## Agenda
 
+### Get the code
+
+Git:
+
+    git clone https://github.com/cucumber-ltd/shouty.rb.git
+    cd shouty.java
+
+Subversion:
+
+    svn checkout https://github.com/cucumber-ltd/shouty.rb
+    cd shouty.java
+
+Or simply [download](https://github.com/cucumber-ltd/shouty.rb/releases) a zip or tarball.
+
 ### Set up environment
 
 * Install Ruby
-* Clone this repo
 * Run `gem install bundler`
 * Run `bundle`
 * Run `cucumber`
