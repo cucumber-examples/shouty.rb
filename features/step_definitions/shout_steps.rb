@@ -15,5 +15,9 @@ When(/^Bob shouts "(.*?)"$/) do |message|
 end
 
 Then(/^Gertrude hears "(.*?)"$/) do |expected_message|
-  expect(@gertrude.received_messages).to eq([expected_message])
+  expect(@gertrude.received_messages).to include(expected_message)
+end
+
+Then(/^Gertrude hears nothing$/) do
+  expect(@gertrude.received_messages).to eq([])
 end

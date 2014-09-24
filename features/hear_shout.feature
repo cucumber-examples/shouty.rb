@@ -15,3 +15,8 @@ Feature: Hear Shout
     Given Gertrude is 499 m away from Bob
     When Bob shouts "free chocolate"
     Then Gertrude hears "free chocolate"
+
+  Scenario: Gertrude doesn't hear Bob's distant shout
+    Given Gertrude is 600 m away from Bob
+    When Bob shouts "free latte"
+    Then Gertrude hears nothing
