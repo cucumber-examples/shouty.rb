@@ -23,9 +23,32 @@ Subversion:
 
 Or simply [download](https://github.com/cucumber-ltd/shouty.rb/releases) a zip or tarball.
 
+### Install Ruby (Windows)
+
+* Download [Ruby 2.0.0](http://rubyinstaller.org/downloads/) *DO NOT CHOOSE x64*
+  * Check "Add to PATH" box during installation (don't check the other boxes)
+
+### Install Ruby (OS X / Linux)
+
+You might already have ruby installed. Check if it's an old one:
+
+    ruby --version
+
+If this is `1.9.3` or more recent you're good to go. If not, install ruby with
+[ruby-install](https://github.com/postmodern/ruby-install):
+
+    ruby-install ruby 2.1
+
+### Install a Text editor
+
+Any text editor will work, but if you don't have one we recommend
+[Sublime](http://www.sublimetext.com/3) (Works on Windows/Mac/Linux).
+
 ### Set up environment
 
-* Install Ruby
+The steps below might fail if you're behind a proxy. See the HTTP_PROXY section
+for details and try again when you have set the proxy.
+
 * Run `gem install bundler`
 * Run `bundle`
 * Run `cucumber`
@@ -34,7 +57,24 @@ You should see:
 
     1 scenario (1 passed)
 
-### Brainstorm capabilities
+### HTTP_PROXY
+
+Your IT department should be able to tell you what the proxy URL is.
+
+#### Windows
+
+* Right-click My Computer, and then click Properties
+* Click the Advanced tab
+* Click Environment variables
+  * Click New to add a new user variable
+  * Name: `HTTP_PROXY`
+  * Value: What the IT department told you
+
+On OS X / Linux:
+
+    export HTTP_PROXY=<What the IT department told you>
+
+## Brainstorm capabilities
 
 * Who are the main stakeholders?
 * What can people do with the app?
