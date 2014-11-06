@@ -1,3 +1,8 @@
 source "https://rubygems.org"
 
-gem "cucumber"
+gem "sinatra"
+
+group :test do
+  gem "cucumber"
+  gem "capybara"
+end
