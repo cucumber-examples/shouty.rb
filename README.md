@@ -14,12 +14,12 @@ That is, if you're attending a BDD/Cucumber course.
 Git:
 
     git clone https://github.com/cucumber-ltd/shouty.rb.git
-    cd shouty.java
+    cd shouty.rb
 
 Subversion:
 
-    svn checkout https://github.com/cucumber-ltd/shouty.rb/trunk shouty
-    cd shouty.java
+    svn checkout https://github.com/cucumber-ltd/shouty.rb/trunk shouty.rb
+    cd shouty.rb
 
 Or simply [download](https://github.com/cucumber-ltd/shouty.rb/releases) a zip or tarball.
 
