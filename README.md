@@ -18,7 +18,7 @@ Git:
 
 Subversion:
 
-    svn checkout https://github.com/cucumber-ltd/shouty.rb
+    svn checkout https://github.com/cucumber-ltd/shouty.rb/trunk shouty
     cd shouty.java
 
 Or simply [download](https://github.com/cucumber-ltd/shouty.rb/releases) a zip or tarball.
