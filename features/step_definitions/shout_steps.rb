@@ -2,8 +2,8 @@ require 'shouty'
 
 Before do
   shoutbox = Shoutbox.new
-  @sean = Person.new(shoutbox)
-  @lucy = Person.new(shoutbox)
+  @sean = shoutbox['Sean']
+  @lucy = shoutbox['Lucy']
 end
 
 Given(/^Lucy is (\d+)ft away from Sean$/) do |distance|
