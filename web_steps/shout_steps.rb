@@ -2,7 +2,6 @@ require 'shouty'
 
 Before do
   visit '/'
-  assert_equal(200, last_response.status)
 end
 
 Given(/^Lucy is (\d+)ft away from Sean$/) do |distance|
