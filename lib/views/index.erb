@@ -2,9 +2,18 @@
 <html>
   <head>
     <title></title>
+    <style type="text/css" media="screen">
+      #last_heard_message {
+        color: red;
+      }
+
+      h1 {
+        background: pink;
+      }
+    </style>
   </head>
   <body>
-    <h1>Hello <%= person.name %></h1>
+    <h1>Hello <%= person.name %> (<%= person.location %>)</h1>
 
     <div id="last_heard_message"><%= person.last_heard_message %></div>
 

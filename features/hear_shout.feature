@@ -1,3 +1,4 @@
+# Read more: https://jira.corp.com/issue/452
 Feature: Hear Shout
 
   Personae
@@ -9,9 +10,12 @@ Feature: Hear Shout
   - Shouts can not be longer than 140 characters
   - People don't hear their own shouts
 
+  Scenario: Lucy, Bob and Paul
+
+  @focus
   Scenario: Lucy is not in the zone
     Given Lucy is 1001ft away from Sean
-    When Sean shouts "Anyone here?"
+    When Sean shouts "Hello"
     Then Lucy should not hear Sean's shout
 
   Scenario: Lucy is in the zone

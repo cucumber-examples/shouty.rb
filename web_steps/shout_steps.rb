@@ -2,22 +2,34 @@ require 'shouty'
 require 'shouty_app'
 
 Before do
-  @sean = Capybara::Session.new(:selenium, ShoutyApp)
-  @lucy = Capybara::Session.new(:selenium, ShoutyApp)
-  @sean.visit('/?name=Sean')
-  @lucy.visit('/?name=Lucy')
+  @sean = Capybara::Session.new(:poltergeist, ShoutyApp)
+  @lucy = Capybara::Session.new(:poltergeist, ShoutyApp)
 end
 
 Given(/^Lucy is (\d+)ft away from Sean$/) do |distance|
-  pending
+  @sean.visit("/?name=Sean&location=0")
+  @lucy.visit("/?name=Lucy&location=#{distance}")
 end
 
 When(/^Sean shouts "(.*?)"$/) do |message|
-  pending
+  @sean.fill_in('Message', :with => message)
+  @sean.click_button('Shout!')
+  @seans_shout = message
 end
 
 Then(/^Lucy should not hear Sean's shout$/) do
-  pending
+  # Reload the page
+  @lucy.visit(@lucy.current_url)
+  # Find the dom element with the text. Work around bug in Selenium causing
+  # empty divs to not be found (Capybara::ElementNotFound)
+  last_heard_message = @lucy.find(:css, '#last_heard_message').text rescue ''
+
+  if last_heard_message == @seans_shout
+    raise "Lucy heard Sean, but we didn't expect her to"
+  end
+
+  # Compare to Sean's latest shout
+  # Raise error if same
 end
 
 Then(/^Lucy should hear Sean's shout$/) do
