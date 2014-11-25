@@ -39,6 +39,14 @@ If this is `1.9.3` or more recent you're good to go. If not, install ruby with
 
     ruby-install ruby 2.1
 
+In addition to Ruby you'll also need a C compiler to install some of the libraries. Check if you already have one:
+
+    gcc --version
+
+If you don't have `gcc` installed you can install it with the following command:
+
+    xcode-select --install
+
 ### Install a Text editor
 
 Any text editor will work, but if you don't have one we recommend
