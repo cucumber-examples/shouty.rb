@@ -21,3 +21,20 @@ Feature: Hear Shout
     Given Lucy is 100ft away from Sean
     When Sean shouts "10% off shoes today!"
     Then Lucy does not hear "10% off shoes today!"
+
+  Scenario: The one where there's too many characters
+    Given Lucy is in range of Sean
+    When Sean shouts:
+      """
+      Hi Lucy, this is Sean shouting too many
+      characters at once. I think this will not go
+      through and be rejected by the awesome
+      Shouty network!!!
+      """
+    Then Lucy does not hear:
+      """
+      Hi Lucy, this is Sean shouting too many
+      characters at once. I think this will not go
+      through and be rejected by the awesome
+      Shouty network!!!
+      """

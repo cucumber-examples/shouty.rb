@@ -9,6 +9,7 @@ class Network
   end
 
   def broadcast(content, from)
+    return unless content.length <= 140
     @people.each do |person|
       distance = (from - person.location).abs
       person.hear(content) if distance < @range
