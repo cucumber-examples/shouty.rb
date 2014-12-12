@@ -1,12 +1,12 @@
 require 'shouty'
 
-Before do
-  @network = Network.new
+Given(/^the shouting range is (\d+)ft$/) do |range|
+  @network = Network.new(range.to_i)
 end
 
 Given(/^Lucy is (\d+)ft away from Sean$/) do |distance|
-  @sean = Person.new(@network)
-  @lucy = Person.new(@network)
+  @sean = Person.new(@network, 0)
+  @lucy = Person.new(@network, distance.to_i)
 end
 
 When(/^Sean shouts "(.*?)"$/) do |content|
@@ -16,5 +16,11 @@ end
 Then(/^Lucy hears "(.*?)"$/) do |content|
   if @lucy.last_heard_shout != content
     raise "Expected Lucy to hear: #{content}"
+  end
+end
+
+Then(/^Lucy does not hear "(.*?)"$/) do |content|
+  if @lucy.last_heard_shout == content
+    raise "Expected Lucy not to hear: #{content}"
   end
 end
