@@ -14,15 +14,18 @@ Feature: Hear Shout
 
   @focus
   Scenario: Lucy is not in the zone
-    Given Lucy is 1001ft away from Sean
+    Given Lucy is at the Winchester on Essex Road
+    And Sean is at the Three Crowns in Stoke Newington
     When Sean shouts "Hello"
     Then Lucy should not hear Sean's shout
 
   Scenario: Lucy is in the zone
-    Given Lucy is 500ft away from Sean
+    Given Lucy is at the Winchester on Essex Road
+    And Sean is at the Steam Passage Tavern on Upper Street
     When Sean shouts "Hi everyone!"
     Then Lucy should hear Sean's shout
 
   Scenario: Sean doesn't hear himself
+    Given Sean is at the Winchester on Essex Road
     When Sean shouts "I don't have voices in my head"
     Then Sean should not hear himself
