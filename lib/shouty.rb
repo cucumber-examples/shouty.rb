@@ -29,12 +29,19 @@ class ShoutServer
   end
 
   def deliver(message, shout_geo_location)
+    return if too_long?(message)
     # loop over all people and deliver message
     @people.each do |person|
       if within_range?(person.geo_location, shout_geo_location)
         person.hear(message)
       end
     end
+  end
+
+private
+
+  def too_long?(message)
+    message.length > 140
   end
 
   def within_range?(loc1, loc2)

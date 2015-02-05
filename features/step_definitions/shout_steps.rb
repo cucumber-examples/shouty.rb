@@ -27,6 +27,11 @@ When(/^(\w+) shouts "(.*?)"$/) do |person_name, message|
   @people[person_name].shout(message)
 end
 
+When(/^(\w+) shouts:$/) do |person_name, message|
+  @the_message = message
+  @people[person_name].shout(message)
+end
+
 Then(/^(\w+) should not hear the message$/) do |person_name|
   expect(@people[person_name].heard_messages).to eq([])
 end
