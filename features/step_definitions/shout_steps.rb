@@ -1,15 +1,19 @@
 require 'shouty'
 require 'rspec'
 
+Given(/^"(.*?)" is at geo location (.*?),(.*?)$/) do |location, lat, long|
+  @locations[location] = [lat, long]
+end
+
 Given(/^Elizabeth is in "(.*?)"$/) do |location|
   @shout_server = ShoutServer.new
   @elizabeth = Person.new(@shout_server)
-  @elizabeth.location = location
+  @elizabeth.geo_location = @locations[location]
 end
 
 Given(/^Charles is in "(.*?)"$/) do |location|
   @charles = Person.new(@shout_server)
-  @charles.location = location
+  @charles.geo_location = @locations[location]
 end
 
 When(/^Elizabeth shouts "(.*?)"$/) do |message|
