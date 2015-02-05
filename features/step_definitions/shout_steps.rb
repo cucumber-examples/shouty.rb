@@ -12,9 +12,15 @@ Given(/^Charles is in "(.*?)"$/) do |location|
 end
 
 When(/^Elizabeth shouts "(.*?)"$/) do |message|
+  @the_shout = message
   @elizabeth.shout(message)
 end
 
 Then(/^Charles should not hear the shout$/) do
   expect(@charles.heard_messages).to eq([])
+end
+
+Then(/^Charles should hear the shout$/) do
+  expected_messages = [@the_shout]
+  expect(@charles.heard_messages).to eq(expected_messages)
 end
