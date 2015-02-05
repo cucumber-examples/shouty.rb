@@ -57,9 +57,9 @@ Any text editor will work, but if you don't have one we recommend
 The steps below might fail if you're behind a proxy. See the HTTP_PROXY section
 for details and try again when you have set the proxy.
 
-* Run `gem install bundler`
-* Run `bundle`
-* Run `cucumber`
+* `gem install bundler`
+* `bundle` - this will install cucumber
+* `cucumber` - this runs cucumber!
 
 You should see:
 
@@ -75,6 +75,8 @@ create a file in `C:\Users\YOURNAME\.gemrc` with:
 :sources:
 - http://rubygems.org
 ```
+
+You'll also need to change your `Gemfile` to use `http` if you have this problem.
 
 ### HTTP_PROXY
 
