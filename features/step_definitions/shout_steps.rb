@@ -7,7 +7,7 @@ Before do
 end
 
 Given(/^"(.*?)" is at geo location (.*?),(.*?)$/) do |location, lat, long|
-  @locations[location] = [lat, long]
+  @locations[location] = [lat.to_f, long.to_f]
 end
 
 Given(/^Elizabeth is in "(.*?)"$/) do |location|
