@@ -2,6 +2,7 @@ require 'shouty'
 require 'rspec'
 
 Before do
+  @people = {}
   @locations = {}
   @shout_server = ShoutServer.new
 end
@@ -10,26 +11,22 @@ Given(/^"(.*?)" is at geo location (.*?),(.*?)$/) do |location, lat, long|
   @locations[location] = [lat.to_f, long.to_f]
 end
 
-Given(/^Elizabeth is in "(.*?)"$/) do |location|
-  @elizabeth = Person.new(@shout_server)
-  @elizabeth.geo_location = @locations[location]
+Given(/^(\w+) is in "(.*?)"$/) do |person_name, location|
+  person = Person.new(@shout_server)
+  person.geo_location = @locations[location]
+  @people[person_name] = person
 end
 
-Given(/^Charles is in "(.*?)"$/) do |location|
-  @charles = Person.new(@shout_server)
-  @charles.geo_location = @locations[location]
-end
-
-When(/^Elizabeth shouts "(.*?)"$/) do |message|
+When(/^(\w+) shouts "(.*?)"$/) do |person_name, message|
   @the_message = message
-  @elizabeth.shout(message)
+  @people[person_name].shout(message)
 end
 
-Then(/^Charles should not hear the message$/) do
-  expect(@charles.heard_messages).to eq([])
+Then(/^(\w+) should not hear the message$/) do |person_name|
+  expect(@people[person_name].heard_messages).to eq([])
 end
 
-Then(/^Charles should hear the message$/) do
+Then(/^(\w+) should hear the message$/) do |person_name|
   expected_messages = [@the_message]
-  expect(@charles.heard_messages).to eq(expected_messages)
+  expect(@people[person_name].heard_messages).to eq(expected_messages)
 end
