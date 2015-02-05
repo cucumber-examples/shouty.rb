@@ -2,25 +2,26 @@ require 'shouty'
 require 'rspec'
 
 Given(/^Elizabeth is in "(.*?)"$/) do |location|
-  @elizabeth = Person.new
+  @shout_server = ShoutServer.new
+  @elizabeth = Person.new(@shout_server)
   @elizabeth.location = location
 end
 
 Given(/^Charles is in "(.*?)"$/) do |location|
-  @charles = Person.new
+  @charles = Person.new(@shout_server)
   @charles.location = location
 end
 
 When(/^Elizabeth shouts "(.*?)"$/) do |message|
-  @the_shout = message
+  @the_message = message
   @elizabeth.shout(message)
 end
 
-Then(/^Charles should not hear the shout$/) do
+Then(/^Charles should not hear the message$/) do
   expect(@charles.heard_messages).to eq([])
 end
 
-Then(/^Charles should hear the shout$/) do
-  expected_messages = [@the_shout]
+Then(/^Charles should hear the message$/) do
+  expected_messages = [@the_message]
   expect(@charles.heard_messages).to eq(expected_messages)
 end
