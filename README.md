@@ -65,6 +65,17 @@ You should see:
 
     1 scenario (1 passed)
 
+#### Windows troubleshooting
+
+If you get an error installing gems,
+create a file in `C:\Users\YOURNAME\.gemrc` with:
+
+```yaml
+# Download gems with http instead of https
+:sources:
+- http://rubygems.org
+```
+
 ### HTTP_PROXY
 
 Your IT department should be able to tell you what the proxy URL is.
