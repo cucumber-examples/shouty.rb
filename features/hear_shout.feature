@@ -1,5 +1,13 @@
 Feature: Hear Shout
 
-  A description goes here...
+  Rules:
+  - Listener must be within 1000m from shouter
+  - Shout disappears when listener leaves
+  - Shout appears when listener enters
+  - Shouts must be 140 characters or less
 
-  Scenario: ????
+  Scenario: Charles can't hear Elizabeth's shout
+    Given Elizabeth is in "Buckingham Palace"
+    But Charles is in "Trafalgar Square"
+    When Elizabeth shouts "Tea is ready, dear!"
+    Then Charles should not hear the shout
