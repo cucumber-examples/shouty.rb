@@ -7,11 +7,11 @@ Before do
   @shout_server = ShoutServer.new
 end
 
-Given(/^"(.*?)" is at geo location (.*?),(.*?)$/) do |location, lat, long|
+Given(/^(.*?) is at geo location (.*?),(.*?)$/) do |location, lat, long|
   @locations[location] = [lat.to_f, long.to_f]
 end
 
-Given(/^(\w+) is in "(.*?)"$/) do |person_name, location|
+Given(/^(\w+) is in (.*?)$/) do |person_name, location|
   person = Person.new(@shout_server)
   person.geo_location = @locations[location]
   @people[person_name] = person
