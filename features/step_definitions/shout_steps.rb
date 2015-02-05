@@ -1,4 +1,5 @@
 require 'shouty'
+require 'rspec'
 
 Given(/^Elizabeth is in "(.*?)"$/) do |location|
   @elizabeth = Person.new
@@ -15,7 +16,5 @@ When(/^Elizabeth shouts "(.*?)"$/) do |message|
 end
 
 Then(/^Charles should not hear the shout$/) do
-  if @charles.heard_messages != []
-    raise "Expected no messages, but got #{@charles.heard_messages}"
-  end
+  expect(@charles.heard_messages).to eq([])
 end
