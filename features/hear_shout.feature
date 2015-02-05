@@ -15,9 +15,11 @@ Feature: Hear Shout
   - Buckingham Palace and St James's Park are close (less than 1000m)
 
   Background:
-    Given Buckingham Palace is at geo location 51.501364,-0.14189
-    And Trafalgar Square is at geo location 51.508039,-0.128069
-    And St James's Park is at geo location 51.49954,-0.13358
+    Given the following geo locations:
+      | name              | lat       | long      |
+      | Buckingham Palace | 51.501364 | -0.141890 |
+      | Trafalgar Square  | 51.508039 | -0.128069 |
+      | St James's Park   | 51.499540 | -0.133580 |
 
   Scenario: Charles hears Elizabeth's shout
     Given Elizabeth is in Buckingham Palace

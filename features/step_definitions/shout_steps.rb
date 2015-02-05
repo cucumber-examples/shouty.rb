@@ -7,8 +7,13 @@ Before do
   @shout_server = ShoutServer.new
 end
 
-Given(/^(.*?) is at geo location (.*?),(.*?)$/) do |location, lat, long|
-  @locations[location] = [lat.to_f, long.to_f]
+Given(/^the following geo locations:$/) do |locations|
+  locations.hashes.each do |name_lat_long|
+    location = name_lat_long['name']
+    lat      = name_lat_long['lat']
+    long     = name_lat_long['long']
+    @locations[location] = [lat.to_f, long.to_f]
+  end
 end
 
 Given(/^(\w+) is in (.*?)$/) do |person_name, location|
