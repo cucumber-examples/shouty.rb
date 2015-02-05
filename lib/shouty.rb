@@ -38,6 +38,6 @@ class ShoutServer
   end
 
   def within_range?(geo_location_a, geo_location_b)
-    puts geo_location_a
+    
   end
 end

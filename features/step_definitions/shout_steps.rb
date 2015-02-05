@@ -1,12 +1,16 @@
 require 'shouty'
 require 'rspec'
 
+Before do
+  @locations = {}
+  @shout_server = ShoutServer.new
+end
+
 Given(/^"(.*?)" is at geo location (.*?),(.*?)$/) do |location, lat, long|
   @locations[location] = [lat, long]
 end
 
 Given(/^Elizabeth is in "(.*?)"$/) do |location|
-  @shout_server = ShoutServer.new
   @elizabeth = Person.new(@shout_server)
   @elizabeth.geo_location = @locations[location]
 end
