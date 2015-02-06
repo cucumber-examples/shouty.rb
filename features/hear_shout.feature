@@ -31,7 +31,7 @@ Feature: Hear Shout
   Scenario: Charles can't hear Elizabeth's shout
     Given Elizabeth is in Buckingham Palace
     But Charles is in Trafalgar Square
-    When Elizabeth shouts "Tea is ready, dear!"
+    When Elizabeth shouts "Hello"
     Then Charles should not hear the message
 
   Scenario: Elizabeth shouts a message that is too long
