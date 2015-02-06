@@ -57,3 +57,11 @@ Then(/^(\w+) should not hear any messages$/) do |person_name|
     expect(browser.all('li').length).to eq(0)
   end
 end
+
+Then(/^(\w+) sees that the message is from (\w+)$/) do |listener_name, shouter_name|
+  browser = @browsers[listener_name]
+  browser.visit(browser.current_path)
+  browser.within('#messages') do
+    expect(browser.find('li')).to have_content(shouter_name)
+  end
+end

@@ -15,8 +15,8 @@
   </form>
 
   <ul id="messages">
-  <% person.heard_messages.each do |message| %>
-    <li><%= message %></li>
+  <% person.heard_shouts.each do |shout| %>
+    <li><%= shout.shouter_name %>: <%= shout.message %></li>
   <% end %>
 </ul>
 </body>
