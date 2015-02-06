@@ -27,6 +27,7 @@ Feature: Hear Shout
     And Charles is in St James's Park
     When Elizabeth shouts "Tea is ready, dear!"
     Then Charles should hear the message
+    And Charles sees that the message is from Elizabeth
 
   Scenario: Charles can't hear Elizabeth's shout
     Given Elizabeth is in Buckingham Palace

@@ -40,3 +40,7 @@ Then(/^(\w+) should hear the message$/) do |person_name|
   expected_messages = [@the_message]
   expect(@people[person_name].heard_messages).to eq(expected_messages)
 end
+
+Then(/^(\w+) sees that the message is from (\w+)$/) do |listener_name, shouter_name|
+  expect(@people[listener_name].heard_shouts[0].shouter_name).to eq(shouter_name)
+end
