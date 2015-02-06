@@ -33,17 +33,18 @@ When(/^(\w+) shouts:$/) do |person_name, message|
 end
 
 Then(/^(\w+) should not hear the message$/) do |person_name|
-  expect(@people[person_name].heard_messages).to eq([])
+  expect(@people[person_name].heard_shouts).to eq([])
 end
 
 Then(/^(\w+) should not hear any messages$/) do |person_name|
-  expect(@people[person_name].heard_messages).to eq([])
+  expect(@people[person_name].heard_shouts).to eq([])
 end
 
 
 Then(/^(\w+) should hear the message$/) do |person_name|
+  actual_messages = @people[person_name].heard_shouts.map {|shout| shout.message}
   expected_messages = [@the_message]
-  expect(@people[person_name].heard_messages).to eq(expected_messages)
+  expect(actual_messages).to eq(expected_messages)
 end
 
 Then(/^(\w+) sees that the message is from (\w+)$/) do |listener_name, shouter_name|

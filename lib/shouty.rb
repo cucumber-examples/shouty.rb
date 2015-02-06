@@ -2,12 +2,10 @@
 
 class Person
   attr_accessor :geo_location
-  attr_reader   :heard_messages
   attr_reader   :heard_shouts
   attr_reader   :name
 
   def initialize(name, shout_server)
-    @heard_messages =  []
     @heard_shouts = []
     @shout_server = shout_server
     @shout_server.subscribe(self)
@@ -19,7 +17,6 @@ class Person
   end
 
   def hear(message, shout)
-    @heard_messages.push(message)
     @heard_shouts.push(shout)
   end
 end
