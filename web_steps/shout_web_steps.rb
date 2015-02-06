@@ -16,7 +16,7 @@ end
 
 Given(/^(\w+) is in (.*?)$/) do |person_name, location|
   # Replace :selenium with :rack_test for faster, headless tests
-  browser = Capybara::Session.new(:selenium, ShoutyApp)
+  browser = Capybara::Session.new(:rack_test, ShoutyApp)
   geo_location = @locations[location]
   url = "/?lat=#{geo_location[0]}&lon=#{geo_location[1]}"
   browser.visit(url)
