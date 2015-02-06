@@ -1,9 +1,12 @@
 require 'rspec'
+require_relative 'helpers'
 
 Before do
   @browsers = {}
   @locations = {}
 end
+
+World(Helpers)
 
 Given(/^the following geo locations:$/) do |locations|
   locations.hashes.each do |name_lat_long|
@@ -24,22 +27,11 @@ Given(/^(\w+) is in (.*?)$/) do |person_name, location|
 end
 
 When(/^(\w+) shouts "(.*?)"$/) do |person_name, message|
-  browser = @browsers[person_name]
-  browser.fill_in('Message', :with => message)
-  browser.click_button('Shout!')
-
-  @shouted_message = message
+  someone_shouts(person_name, message)
 end
 
 When(/^(\w+) shouts:$/) do |person_name, message|
-  browser = @browsers[person_name]
-  # workaround for selenium bug. selenium only lets the
-  # first line of a multiline string through to the field
-  message_without_newlines = message.gsub(/\n/m, '')
-  browser.fill_in('Message', :with => message_without_newlines)
-  browser.click_button('Shout!')
-
-  @shouted_message = message
+  someone_shouts(person_name, message)
 end
 
 Then(/^(\w+) should hear the message$/) do |person_name|
