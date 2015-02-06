@@ -5,6 +5,7 @@ Feature: Hear Shout
   - [ ] Shout disappears when listener leaves
   - [ ] Shout appears when listener enters
   - [x] Shouts longer that 140 characters are not delivered
+  - [ ] No newlines in messages
 
   Questions:
   - Will people hear their own messages?
@@ -46,4 +47,4 @@ Feature: Hear Shout
       Spam spam spam spam spam spam spam spam spam spam spam spam
       Spam spam spam spam spam spam spam spam spam spam spam spam
       """
-    Then Charles should not hear the message
+    Then Charles should not hear any messages
