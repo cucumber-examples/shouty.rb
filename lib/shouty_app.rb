@@ -16,7 +16,7 @@ class ShoutyApp < Sinatra::Application
     # Get a person object using the session's person_name as key
     def person
       person_name = session[:person_name]
-      person = settings.people[person_name] ||= Person.new(settings.shout_server)
+      person = settings.people[person_name] ||= Person.new(person_name, settings.shout_server)
       if params[:lat] && params[:lon]
         person.geo_location = [params[:lat].to_f, params[:lon].to_f]
       end
