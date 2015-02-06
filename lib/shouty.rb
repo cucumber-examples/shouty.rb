@@ -3,19 +3,32 @@
 class Person
   attr_accessor :geo_location
   attr_reader   :heard_messages
+  attr_reader   :heard_shouts
+  attr_reader   :name
 
-  def initialize(shout_server)
+  def initialize(name, shout_server)
     @heard_messages =  []
+    @heard_shouts = []
     @shout_server = shout_server
     @shout_server.subscribe(self)
+    @name = name
   end
 
   def shout(message)
-    @shout_server.deliver(message, geo_location)
+    @shout_server.deliver(message, Shout.new(self.name, message), geo_location)
   end
 
-  def hear(message)
+  def hear(message, shout)
     @heard_messages.push(message)
+    @heard_shouts.push(shout)
+  end
+end
+
+class Shout
+  attr_reader :shouter_name, :message
+  def initialize(shouter_name, message)
+    @shouter_name = shouter_name
+    @message = message
   end
 end
 
@@ -28,12 +41,12 @@ class ShoutServer
     @people.push(person)
   end
 
-  def deliver(message, shout_geo_location)
+  def deliver(message, shout, shout_geo_location)
     return if too_long?(message)
     # loop over all people and deliver message
     @people.each do |person|
       if within_range?(person.geo_location, shout_geo_location)
-        person.hear(message)
+        person.hear(message, shout)
       end
     end
   end

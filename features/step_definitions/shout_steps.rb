@@ -17,7 +17,7 @@ Given(/^the following geo locations:$/) do |locations|
 end
 
 Given(/^(\w+) is in (.*?)$/) do |person_name, location|
-  person = Person.new(@shout_server)
+  person = Person.new(person_name, @shout_server)
   person.geo_location = @locations[location]
   @people[person_name] = person
 end
@@ -36,11 +36,17 @@ Then(/^(\w+) should not hear the message$/) do |person_name|
   expect(@people[person_name].heard_messages).to eq([])
 end
 
+Then(/^(\w+) should not hear any messages$/) do |person_name|
+  expect(@people[person_name].heard_messages).to eq([])
+end
+
+
 Then(/^(\w+) should hear the message$/) do |person_name|
   expected_messages = [@the_message]
   expect(@people[person_name].heard_messages).to eq(expected_messages)
 end
 
 Then(/^(\w+) sees that the message is from (\w+)$/) do |listener_name, shouter_name|
-  expect(@people[listener_name].heard_shouts[0].shouter_name).to eq(shouter_name)
+  expected_shout = @people[listener_name].heard_shouts[0]
+  expect(expected_shout.shouter_name).to eq(shouter_name)
 end
