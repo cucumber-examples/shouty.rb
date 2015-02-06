@@ -14,10 +14,10 @@
     <input type="submit" value="Shout!">
   </form>
 
-  <ul>
+  <ul id="messages">
   <% person.heard_messages.each do |message| %>
     <li><%= message %></li>
   <% end %>
-  </ul>
+</ul>
 </body>
 </html>

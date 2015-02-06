@@ -37,17 +37,23 @@ end
 Then(/^(\w+) should hear the message$/) do |person_name|
   browser = @browsers[person_name]
   browser.visit(browser.current_path)
-  expect(browser).to have_content(@shouted_message)
+  browser.within('#messages') do
+    expect(browser).to have_content(@shouted_message)
+  end
 end
 
 Then(/^(\w+) should not hear the message$/) do |person_name|
   browser = @browsers[person_name]
   browser.visit(browser.current_path)
-  expect(browser).to_not have_content(@shouted_message)
+  browser.within('#messages') do
+    expect(browser).to_not have_content(@shouted_message)
+  end
 end
 
 Then(/^(\w+) should not hear any messages$/) do |person_name|
   browser = @browsers[person_name]
   browser.visit(browser.current_path)
-  expect(browser.all('li').length).to eq(0)
+  browser.within('#messages') do
+    expect(browser.all('li').length).to eq(0)
+  end
 end
