@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <style type="text/css" media="screen">
+  </style>
+</head>
+<body>
+  <h1>Hello <%= person_name %> (<%= person.geo_location %>)</h1>
+
+  <form method="post">
+    <label for="message">Message</label>
+    <input type="text" name="message" value="" id="message">
+    <input type="submit" value="Shout!">
+  </form>
+
+  <ul>
+  <% person.heard_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+  </ul>
+</body>
+</html>
