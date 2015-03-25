@@ -37,7 +37,7 @@ You might already have ruby installed. Check if it's an old one:
 If this is `1.9.3` or more recent you're good to go. If not, install ruby with
 [ruby-install](https://github.com/postmodern/ruby-install):
 
-    ruby-install ruby 2.1
+    ruby-install ruby 2.2.1
 
 In addition to Ruby you'll also need a C compiler to install some of the libraries. Check if you already have one:
 
