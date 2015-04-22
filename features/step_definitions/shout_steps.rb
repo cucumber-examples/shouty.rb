@@ -1,5 +1,3 @@
-# features/step_definitions/shout_steps.rb
-
 require 'shouty'
 
 Given(/^Lucy is (\d+)m away from Sean$/) do |distance|
@@ -10,18 +8,26 @@ Given(/^Lucy is (\d+)m away from Sean$/) do |distance|
   @lucy = Person.new(network, lucy_position)
 end
 
+Given(/^Lucy is out of Sean's range$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
 When(/^Sean shouts "(.*?)"$/) do |message|
   @sean.shout(message)
 end
 
+When(/^Sean shouts$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
 Then(/^Lucy should hear "(.*?)"$/) do |expected_message|
-  if @lucy.last_heard_message != expected_message
-    raise "Expected Lucy to hear #{expected_message}, got #{@lucy.last_heard_message.inspect} instead"
-  end
+  expect(@lucy.last_heard_message).to eq expected_message
+end
+
+Then(/^Lucy should hear Sean's message$/) do
+  pending # express the regexp above with the code you wish you had
 end
 
 Then(/^Lucy should not hear "(.*?)"$/) do |not_expected_message|
-  if @lucy.last_heard_message == not_expected_message
-    raise "Expected Lucy not to hear #{not_expected_message} but she heard it!"
-  end
+  expect(@lucy.last_heard_message).not_to eq not_expected_message
 end

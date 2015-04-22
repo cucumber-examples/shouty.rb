@@ -16,6 +16,12 @@ Feature: Basic Shout
     When Sean shouts "Hi SF!"
     Then Lucy should hear "Hi SF!"
 
+  @focus
+  Scenario: the one where Lucy is in range
+    Given Lucy is within Sean's range
+    When Sean shouts
+    Then Lucy should hear Sean's message
+
   Scenario: the one where Lucy is out of range
     Given Lucy is 1001m away from Sean
     When Sean shouts "Hi SF!"

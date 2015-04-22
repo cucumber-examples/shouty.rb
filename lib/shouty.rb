@@ -1,5 +1,3 @@
-# lib/shouty.rb
-
 class Network
   def initialize
     @people = []
@@ -29,7 +27,7 @@ class Person
   end
 
   def shout(message)
-    @network.broadcast(message, self)
+    @network.broadcast(message, self) unless message.length > 256
   end
 
   def hear(message)
