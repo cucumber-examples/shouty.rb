@@ -17,6 +17,8 @@ class Network
 end
 
 class Person
+  attr_reader :last_heard_message
+
   def initialize(network)
     @network = network
     network.register(self)
@@ -26,7 +28,7 @@ class Person
     @network.broadcast(message)
   end
 
-  def last_heard_message
-    @last_heard_message
+  def hear(message)
+    @last_heard_message = message
   end
 end

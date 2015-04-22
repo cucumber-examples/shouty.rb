@@ -4,8 +4,8 @@ require 'shouty'
 
 Given(/^Lucy is (\d+)m away from Sean$/) do |distance|
   network = Network.new
-  @sean = Person.new(network)
-  @lucy = Person.new(network)
+  @sean = Person.new(network, 0)
+  @lucy = Person.new(network, distance.to_i)
 end
 
 When(/^Sean shouts "(.*?)"$/) do |message|
