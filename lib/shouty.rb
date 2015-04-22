@@ -1,5 +1,9 @@
 class Network
   def initialize
+
+
+
+
     @people = []
   end
 
