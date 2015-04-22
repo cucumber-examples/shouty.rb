@@ -10,15 +10,13 @@ class Network
   def broadcast(message, shouter)
     @people.each do |person|
       distance = (shouter.position - person.position).abs
-      if distance <= 1000
-        person.hear(message)
-      end
+      person.hear(message) if distance <= 1000
     end
   end
 end
 
 class Person
-  attr_reader :last_heard_message
+  attr_reader :last_heard_message, :position
 
   def initialize(network, position)
     @network = network
@@ -32,9 +30,5 @@ class Person
 
   def hear(message)
     @last_heard_message = message
-  end
-
-  def position
-    @position
   end
 end
