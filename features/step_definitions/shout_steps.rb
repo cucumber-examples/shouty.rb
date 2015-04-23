@@ -1,6 +1,6 @@
 require 'shouty'
 
-World(DomainWorld)
+World(ENV['WORLD'] == 'api' ? ApiWorld : DomainWorld)
 
 Before do
   start_shouty
