@@ -5,17 +5,13 @@ Before do
 end
 
 Given(/^Lucy is within Sean's range$/) do
-  sean_position = 0
-  lucy_position = 1000
-  @sean = Person.new(@network, sean_position)
-  @lucy = Person.new(@network, lucy_position)
+  @sean = Person.new(@network, 0)
+  @lucy = Person.new(@network, 1000)
 end
 
 Given(/^Lucy is out of Sean's range$/) do
-  sean_position = 0
-  lucy_position = 1001
-  @sean = Person.new(@network, sean_position)
-  @lucy = Person.new(@network, lucy_position)
+  @sean = Person.new(@network, 0)
+  @lucy = Person.new(@network, 1001)
 end
 
 When(/^Sean shouts(?: a short enough message)?$/) do
