@@ -1,6 +1,15 @@
 require 'shouty'
 
-World(ENV['WORLD'] == 'api' ? ApiWorld : DomainWorld)
+world =
+case ENV['WORLD']
+when 'api'
+  ApiWorld
+when 'web'
+  WebWorld
+else
+  DomainWorld
+end
+World(world)
 
 Before do
   start_shouty

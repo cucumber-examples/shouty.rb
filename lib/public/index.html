@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Shouty</title>
+    <script src="/scripts/jquery-2.1.3.js"></script>
+    <script src="/scripts/shouty.js"></script>
+  </head>
+  <body>
+    <h1>Shouty</h1>
+
+    <div id="registration">
+      <form>
+        <input id="name" placeholder="Your name"></input>
+        <input id="position" placeholder="Your position"></input>
+        <input type="submit" value="Register"></input>
+      </form>
+    </div>
+
+    <div id="feed">
+      <p>Connected as <span class="name"></span> (position: <span class="position"></span>)</p>
+      <p>Last heard message: <span class="last-heard-message"></span></p>
+
+      <form>
+        <input id="message" placeholder="Something to shout"></input>
+        <input type="submit" value="Shout"></input>
+      </form>
+    </div>
+
+  </body>
+</html>

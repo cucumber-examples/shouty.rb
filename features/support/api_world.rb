@@ -9,7 +9,7 @@ module ApiWorld
   end
 
   def start_shouty
-    # no-op, handled by Rack::Test
+    # no-op
   end
 
   def register_sean(position)
