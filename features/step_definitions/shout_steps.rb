@@ -25,3 +25,12 @@ Then(/^"([^"]*)" should not receive the message$/) do |person_name|
     raise "Expected #{expected_messages_heard}, but got #{actual_messages_heard}"
   end
 end
+
+Then(/^"([^"]*)" should receive the message$/) do |person_name|
+  actual_messages_heard = @shouty.messages_heard_by(person_name) # Array
+  expected_messages_heard = ["hello"]
+
+  if(actual_messages_heard != expected_messages_heard)
+    raise "Expected #{expected_messages_heard}, but got #{actual_messages_heard}"
+  end
+end
