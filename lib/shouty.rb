@@ -47,6 +47,7 @@ class Person
 
   def initialize(message_service)
     @message_service = message_service
+    @messages_heard = []
   end
 
   def shout(message)
@@ -54,6 +55,10 @@ class Person
   end
 
   def messages_heard
-    []
+    @messages_heard
+  end
+
+  def hear(message)
+    @messages_heard.push(message)
   end
 end
