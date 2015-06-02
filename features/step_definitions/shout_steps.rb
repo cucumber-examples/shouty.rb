@@ -1,7 +1,9 @@
 require 'shouty'
 
 LOCATIONS = {
-  "Leeds Stadium" => [53.777816,-1.572145]
+  "Leeds Stadium"     => [53.777816,-1.572145],
+  "Osterley Tube"     => [51.481358,-0.350519],
+  "Westminster Abbey" => [51.499292,-0.12731]
 }
 
 Before do

@@ -1,4 +1,4 @@
-# This is where we'll write the code of our Shouty app
+require 'haversine'
 
 class Shouty
   def initialize
@@ -34,10 +34,17 @@ class MessageService
     @shouty = shouty
   end
 
-  def broadcast(message)
-    @shouty.people.each do |person|
-      person.hear(message)
+  def broadcast(message, shouting_person)
+    @shouty.people.each do |receiving_person|
+      if within_range?(receiving_person.geo_location, shouting_person.geo_location)
+        receiving_person.hear(message)
+      end
     end
+  end
+
+  def within_range?(geo_location_a, geo_location_b)
+    distance = Haversine.distance(geo_location_a, geo_location_b)
+    distance.to_meters <= 1000
   end
 end
 
@@ -51,7 +58,7 @@ class Person
   end
 
   def shout(message)
-    @message_service.broadcast(message)
+    @message_service.broadcast(message, self)
   end
 
   def messages_heard
