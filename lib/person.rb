@@ -1,5 +1,4 @@
 class Person
-  attr_accessor :name
   attr_accessor :geo_location
 
   def initialize(message_service)

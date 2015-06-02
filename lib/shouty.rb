@@ -13,7 +13,6 @@ class Shouty
 
   def person_is_in(person_name, geo_location)
     person = Person.new(@message_service)
-    person.name = person_name
     person.geo_location = geo_location
 
     @people[person_name] = person
