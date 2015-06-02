@@ -18,6 +18,6 @@ Feature: Hear Shout
 
   Scenario: Lauren hears Claire's message
     Given "Claire" is in "Osterly"
-    And "Lauren" is also in "Osterly"
+    And "Lauren" is in "Osterly"
     When "Claire" sends a message
     Then "Lauren" should receive the message
