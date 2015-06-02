@@ -5,13 +5,13 @@ LOCATIONS = {
 }
 
 Given(/^"([^"]*)" is in "([^"]*)"$/) do |person_name, location_name|
-  shouty = Shouty.new
+  @shouty = Shouty.new
   geo_location = LOCATIONS[location_name]
-  shouty.person_is_in(person_name, geo_location)
+  @shouty.person_is_in(person_name, geo_location)
 end
 
-When(/^"([^"]*)" sends a message$/) do |arg1|
-  pending # Write code here that turns the phrase above into concrete actions
+When(/^"([^"]*)" sends a message$/) do |person_name|
+  @shouty.person_sends_a_message(person_name, "hello")
 end
 
 Then(/^"([^"]*)" should not receive the message$/) do |arg1|
