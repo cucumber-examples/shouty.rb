@@ -3,7 +3,11 @@
 class Shouty
   def initialize
     @people = {}
-    @message_service = MessageService.new
+    @message_service = MessageService.new(self)
+  end
+
+  def people
+    @people.values
   end
 
   def person_is_in(person_name, geo_location)
@@ -26,7 +30,14 @@ class Shouty
 end
 
 class MessageService
+  def initialize(shouty)
+    @shouty = shouty
+  end
+
   def broadcast(message)
+    @shouty.people.each do |person|
+      person.hear(message)
+    end
   end
 end
 
