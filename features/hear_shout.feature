@@ -13,11 +13,11 @@ Feature: Hear Shout
   Scenario: Tom doesn't hear Jim's message
     Given "Jim" is in "Leeds Stadium"
     And "Tom" is in "Westminster Abbey"
-    When "Jim" sends a message
+    When "Jim" shouts "hello"
     Then "Tom" should not receive the message
 
   Scenario: Lauren hears Claire's message
     Given "Claire" is in "Osterley Tube"
     And "Lauren" is in "Osterley Tube"
-    When "Claire" sends a message
+    When "Claire" shouts "hi"
     Then "Lauren" should receive the message
