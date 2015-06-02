@@ -1,17 +1,21 @@
 require 'shouty'
 
-LOCATIONS = {
-  "Leeds Stadium"     => [53.777816,-1.572145],
-  "Osterley Tube"     => [51.481358,-0.350519],
-  "Westminster Abbey" => [51.499292,-0.12731]
-}
-
 Before do
   @shouty = Shouty.new
 end
 
+Given(/^the following locations:$/) do |locations_table|
+  @locations = {}
+  locations_table.hashes.each do |location|
+    location_name = location['location_name']
+    lat           = location['lat'].to_f
+    lon           = location['lon'].to_f
+    @locations[location_name] = [lat, lon]
+  end
+end
+
 Given(/^"([^"]*)" is in "([^"]*)"$/) do |person_name, location_name|
-  geo_location = LOCATIONS[location_name]
+  geo_location = @locations[location_name]
   @shouty.person_is_in(person_name, geo_location)
 end
 

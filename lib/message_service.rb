@@ -10,7 +10,7 @@ class MessageService
   def broadcast(message, shouting_person)
     @shouty.people.each do |receiving_person|
       if within_range?(receiving_person.geo_location, shouting_person.geo_location)
-        receiving_person.hear(message)
+        receiving_person.hear(message) unless shouting_person == receiving_person
       end
     end
   end
