@@ -17,6 +17,11 @@ When(/^"([^"]*)" sends a message$/) do |person_name|
   @shouty.person_sends_a_message(person_name, "hello")
 end
 
-Then(/^"([^"]*)" should not receive the message$/) do |arg1|
-  pending # Write code here that turns the phrase above into concrete actions
+Then(/^"([^"]*)" should not receive the message$/) do |person_name|
+  actual_messages_heard = @shouty.messages_heard_by(person_name) # Array
+  expected_messages_heard = []
+
+  if(actual_messages_heard != expected_messages_heard)
+    raise "Expected #{expected_messages_heard}, but got #{actual_messages_heard}"
+  end
 end
