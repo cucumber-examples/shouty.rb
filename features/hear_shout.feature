@@ -11,8 +11,8 @@ Feature: Hear Shout
   -
 
   Scenario: Tom doesn't hear Jim's message
-    Given "Jim" is in "Leeds"
-    And "Tom" is in "London"
+    Given "Jim" is in "Leeds Stadium"
+    And "Tom" is in "Westminster"
     When "Jim" sends a message
     Then "Tom" should not receive the message
 
