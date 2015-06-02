@@ -45,7 +45,7 @@ If this is `1.9.3` or more recent you're good to go. If not, install ruby with
     apt-get install rbenv ruby-install
 
     # Install ruby
-    rbenv install 2.2.2
+    rbenv install 2.2.0
 
 In addition to Ruby you'll also need a C compiler to install some of the libraries. Check if you already have one:
 
