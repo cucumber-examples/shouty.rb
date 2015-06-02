@@ -4,8 +4,11 @@ LOCATIONS = {
   "Leeds Stadium" => [53.777816,-1.572145]
 }
 
-Given(/^"([^"]*)" is in "([^"]*)"$/) do |person_name, location_name|
+Before do
   @shouty = Shouty.new
+end
+
+Given(/^"([^"]*)" is in "([^"]*)"$/) do |person_name, location_name|
   geo_location = LOCATIONS[location_name]
   @shouty.person_is_in(person_name, geo_location)
 end
