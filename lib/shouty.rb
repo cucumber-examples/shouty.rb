@@ -17,6 +17,11 @@ class Shouty
     person = @people[person_name]
     person.shout(message)
   end
+
+  def messages_heard_by(person_name)
+    person = @people[person_name]
+    person.messages_heard
+  end
 end
 
 class Person
@@ -24,5 +29,9 @@ class Person
   attr_accessor :geo_location
 
   def shout(message)
+  end
+
+  def messages_heard
+    []
   end
 end
