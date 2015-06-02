@@ -1,10 +1,10 @@
 # This is where we'll write the code of our Shouty app
 
 class Shouty
-  def person_is_in(person_name, location_name)
+  def person_is_in(person_name, geo_location)
     person = Person.new
     person.name = person_name
-    person.geo_location = LOCATIONS[location_name]
+    person.geo_location = geo_location
   end
 end
 

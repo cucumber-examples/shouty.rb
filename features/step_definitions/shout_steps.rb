@@ -6,7 +6,8 @@ LOCATIONS = {
 
 Given(/^"([^"]*)" is in "([^"]*)"$/) do |person_name, location_name|
   shouty = Shouty.new
-  shouty.person_is_in(person_name, location_name)
+  geo_location = LOCATIONS[location_name]
+  shouty.person_is_in(person_name, geo_location)
 end
 
 When(/^"([^"]*)" sends a message$/) do |arg1|
