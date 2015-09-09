@@ -15,6 +15,7 @@ Git:
 
     git clone https://github.com/cucumber-ltd/shouty.rb.git
     cd shouty.rb
+    git checkout YYYY-MM-DD
 
 Subversion:
 
