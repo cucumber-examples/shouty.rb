@@ -25,10 +25,14 @@ class Shouty
     person.messages_heard
   end
 
-  def broadcast(message, shouting_person)
-    @people.values.each do |receiving_person|
-      if within_range?(receiving_person.geo_location, shouting_person.geo_location)
-        receiving_person.hear(message) unless shouting_person == receiving_person
+  def geo_location_of(person_name)
+    @people[person_name].geo_location
+  end
+
+  def broadcast(shouter, message)
+    @people.values.each do |listener|
+      if within_range?(listener.geo_location, shouter.geo_location)
+        listener.hear(message)
       end
     end
   end

@@ -7,7 +7,7 @@ class Person
   end
 
   def shout(message)
-    @shouty.broadcast(message, self)
+    @shouty.broadcast(self, message)
   end
 
   def hear(message)

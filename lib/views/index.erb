@@ -1,5 +1,6 @@
 <% if session[:person_name] %>
   <div>Hello, <%= session[:person_name] %></div>
+  <div>Geo location: <%= geo_location.nil? ? 'unknown' : geo_location.inspect %>
 
   <form method="post" action="/positions">
     <input type="text" name="lat" placeholder="lat">

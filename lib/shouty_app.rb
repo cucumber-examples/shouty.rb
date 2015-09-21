@@ -5,11 +5,14 @@ require 'shouty'
 class ShoutyApp < Sinatra::Application
   set :shouty, Shouty.new
   set :logging, nil
-  use Rack::Session::Cookie, :secret => 'keyboard cat 3'
+
+  random_string = (0...8).map { (65 + rand(26)).chr }.join
+  use Rack::Session::Cookie, :secret => random_string # so cookies expire on server restart
 
   get '/' do
     messages_heard = session[:person_name].nil? ? nil : settings.shouty.messages_heard_by(session[:person_name])
-    erb :index, locals: {messages_heard: messages_heard}
+    geo_location   = session[:person_name].nil? ? nil : settings.shouty.geo_location_of(session[:person_name])
+    erb :index, locals: {messages_heard: messages_heard, geo_location: geo_location}
   end
 
   post '/login' do
