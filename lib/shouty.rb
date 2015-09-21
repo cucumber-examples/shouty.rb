@@ -15,7 +15,7 @@ class Shouty
     @people[person_name] = person
   end
 
-  def person_sends_a_message(person_name, message)
+  def person_shouts(person_name, message)
     person = @people[person_name]
     person.shout(message)
   end

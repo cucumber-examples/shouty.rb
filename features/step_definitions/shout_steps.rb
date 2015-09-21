@@ -21,7 +21,7 @@ end
 
 When(/^"([^"]*)" shouts "(.*)"$/) do |person_name, message|
   @shouted_message = message
-  person_sends_a_message(person_name, message)
+  person_shouts(person_name, message)
 end
 
 Then(/^"([^"]*)" should not receive the message$/) do |person_name|
