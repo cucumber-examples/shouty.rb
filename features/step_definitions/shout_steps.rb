@@ -1,7 +1,11 @@
-require 'shouty'
-
 World do
-  Shouty.new
+  case ENV['WORLD']
+  when 'web'
+    WebWorld.new
+  else
+    require 'shouty'
+    Shouty.new
+  end
 end
 
 Given(/^the following locations:$/) do |locations_table|

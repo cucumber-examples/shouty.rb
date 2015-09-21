@@ -1,0 +1,25 @@
+<% if session[:person_name] %>
+  <div>Hello, <%= session[:person_name] %></div>
+
+  <form method="post" action="/positions">
+    <input type="text" name="lat" placeholder="lat">
+    <input type="text" name="lon" placeholder="lon">
+    <input type="submit" value="Move">
+  </form>
+
+  <form method="post" action="/messages">
+    <input type="text" name="message" placeholder="What's on your mind?">
+    <input type="submit" value="Shout">
+  </form>
+
+  <ul id="messages_heard">
+  <% messages_heard.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+  </ul>
+<% else %>
+  <form method="post" action="/login">
+    <input type="text" name="person_name" placeholder="What's your name?">
+    <input type="submit" value="Login">
+  </form>
+<% end %>

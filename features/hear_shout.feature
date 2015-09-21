@@ -13,19 +13,19 @@ Feature: Hear Shout
 
   Background:
     Given the following locations:
-      | location_name     | lat       | lon       |
-      | Leeds Stadium     | 53.777816 | -1.572145 |
-      | Osterley Tube     | 51.481358 | -0.350519 |
-      | Westminster Abbey | 51.499292 | -0.127310 |
+      | location_name       | lat        | lon        |
+      | Osterley Station    | 51.4765056 | -0.3557913 |
+      | Islesworth Station  | 51.4769982 | -0.3515469 |
+      | Heathrow Terminal 5 | 51.4715394 | -0.4877838 |
 
   Scenario: Tom doesn't hear Jim's message
-    Given "Jim" is in "Leeds Stadium"
-    But "Tom" is in "Westminster Abbey"
+    Given "Jim" is in "Osterley Station"
+    But "Tom" is in "Heathrow Terminal 5"
     When "Jim" shouts "hello"
     Then "Tom" should not receive the message
 
   Scenario: Lauren hears Claire's message
-    Given "Claire" is in "Osterley Tube"
-    And "Lauren" is in "Osterley Tube"
+    Given "Claire" is in "Osterley Station"
+    And "Lauren" is in "Islesworth Station"
     When "Claire" shouts "hi"
     Then "Lauren" should receive the message
