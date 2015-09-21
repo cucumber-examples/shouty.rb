@@ -1,7 +1,7 @@
 require 'shouty'
 
-Before do
-  @shouty = Shouty.new
+World do
+  Shouty.new
 end
 
 Given(/^the following locations:$/) do |locations_table|
@@ -16,20 +16,20 @@ end
 
 Given(/^"([^"]*)" is in "([^"]*)"$/) do |person_name, location_name|
   geo_location = @locations[location_name]
-  @shouty.person_is_in(person_name, geo_location)
+  person_is_in(person_name, geo_location)
 end
 
 When(/^"([^"]*)" shouts "(.*)"$/) do |person_name, message|
   @shouted_message = message
-  @shouty.person_sends_a_message(person_name, message)
+  person_sends_a_message(person_name, message)
 end
 
 Then(/^"([^"]*)" should not receive the message$/) do |person_name|
   # rspec
-  expect(@shouty.messages_heard_by(person_name)).to eq([])
+  expect(messages_heard_by(person_name)).to eq([])
 end
 
 Then(/^"([^"]*)" should receive the message$/) do |person_name|
   # rspec
-  expect(@shouty.messages_heard_by(person_name)).to eq([@shouted_message])
+  expect(messages_heard_by(person_name)).to eq([@shouted_message])
 end
