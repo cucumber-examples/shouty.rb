@@ -1,17 +1,13 @@
 class Person
-  attr_accessor :geo_location
+  attr_accessor :geo_location, :messages_heard
 
-  def initialize(message_service)
-    @message_service = message_service
+  def initialize(shouty)
+    @shouty = shouty
     @messages_heard = []
   end
 
   def shout(message)
-    @message_service.broadcast(message, self)
-  end
-
-  def messages_heard
-    @messages_heard
+    @shouty.broadcast(message, self)
   end
 
   def hear(message)
