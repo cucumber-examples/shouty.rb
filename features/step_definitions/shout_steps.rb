@@ -18,7 +18,5 @@ end
 
 Then(/^Gush shouldn't receive any messages$/) do
   actual = @shouty.messages_received_by("Gush")
-  if ([] != actual)
-    raise "Expected nothing, but got #{actual}"
-  end
+  expect(actual).to eq([])
 end

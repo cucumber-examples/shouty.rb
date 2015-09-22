@@ -5,4 +5,8 @@ class Shouty
 
   def send_message(user_name, message)
   end
+
+  def messages_received_by(user_name)
+    []
+  end
 end
