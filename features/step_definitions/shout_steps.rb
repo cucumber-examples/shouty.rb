@@ -13,9 +13,12 @@ Given(/^Gush's location is more than (\d+)km from Elliott$/) do |distance|
 end
 
 When(/^Elliott sends a message$/) do
-  @shouty.send_message("Elliott", message)
+  @shouty.send_message("Elliott", "You around Gush?")
 end
 
-Then(/^Gush shouldn't receive a message from Elliott$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+Then(/^Gush shouldn't receive any messages$/) do
+  actual = @shouty.messages_received_by("Gush")
+  if ([] != actual)
+    raise "Expected nothing, but got #{actual}"
+  end
 end

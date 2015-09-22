@@ -2,4 +2,7 @@
 class Shouty
   def person_is_in(user_name, geo_location)
   end
+
+  def send_message(user_name, message)
+  end
 end

@@ -17,4 +17,4 @@ Feature: Hear Shout
   Scenario: Gush is too far away from Elliott to hear him
     Given Gush's location is more than 1km from Elliott
     When Elliott sends a message
-    Then Gush shouldn't receive a message from Elliott
+    Then Gush shouldn't receive any messages
