@@ -13,6 +13,9 @@ Feature: Hear Shout
   - How long does a message last?
 
   Scenario: Gush is 8m away from Elliott and can hear him
+    Given Gush's location is less than 1km from Elliott
+    When Elliott sends a message
+    Then Gush should receive Elliot's message
 
   Scenario: Gush is too far away from Elliott to hear him
     Given Gush's location is more than 1km from Elliott
