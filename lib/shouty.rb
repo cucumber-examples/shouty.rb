@@ -31,8 +31,10 @@ class Shouty
 
   def broadcast(shouter, message)
     @people.values.each do |listener|
-      if within_range?(listener.geo_location, shouter.geo_location)
-        listener.hear(message)
+      if(listener != shouter)
+        if within_range?(listener.geo_location, shouter.geo_location)
+          listener.hear(message)
+        end
       end
     end
   end

@@ -23,6 +23,11 @@ Given(/^"([^"]*)" is in "([^"]*)"$/) do |person_name, location_name|
   person_is_in(person_name, geo_location)
 end
 
+Given(/^"([^"]*)" is in any location$/) do |person_name|
+  geo_location = @locations['Heathrow Terminal 5']
+  person_is_in(person_name, geo_location)
+end
+
 When(/^"([^"]*)" shouts "(.*)"$/) do |person_name, message|
   @shouted_message = message
   person_shouts(person_name, message)
