@@ -7,11 +7,11 @@ Before do
 end
 
 Given(/^Lucy is at (\d+), (\d+)$/) do |x, y|
-  @shouty.set_location("Lucy", Coordinate.new(x, y))
+  @shouty.set_location("Lucy", Coordinate.new(x.to_i, y.to_i))
 end
 
 Given(/^Sean is at (\d+), (\d+)$/) do |x, y|
-  @shouty.set_location("Sean", Coordinate.new(x, y))
+  @shouty.set_location("Sean", Coordinate.new(x.to_i, y.to_i))
 end
 
 When(/^Sean shouts$/) do
