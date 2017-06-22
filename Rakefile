@@ -1,7 +1,8 @@
 task default: :test
 
 task test: 'Gemfile.lock' do
-  sh "rspec ; cucumber"
+  sh "rspec"
+  sh "cucumber"
 end
 
 task rspec: 'Gemfile.lock' do
