@@ -1,4 +1,5 @@
 require 'shouty'
+require 'coordinate'
 
 ARBITRARY_MESSAGE = "Hello, world"
 
