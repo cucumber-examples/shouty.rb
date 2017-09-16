@@ -7,7 +7,7 @@ class Coordinate
   end
 
   def distance_from(other)
-    # TODO: actually caluculate distance. I think we need to use Pythagorean theorem?
+    # TODO: actually caluculate distance. I think we need to use the Pythagorean theorem?
     0
   end
 end
