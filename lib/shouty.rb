@@ -5,27 +5,31 @@ class Shouty
 
     def initialize
       @locations = {}
-      @messages = {}
+      @shouts = {}
     end
 
     def set_location(person, location)
       @locations[person] = location
     end
 
-    def shout(person, message)
-      @messages[person] = message
+    def shout(person, shout)
+      if (!@shouts.key?(person))
+        @shouts[person] = []
+      end
+
+      @shouts[person].push(shout)
     end
 
-    def messages_heard_by(listener)
-      result = {}
+    def shouts_heard_by(listener)
+      shoutsHeard = {}
 
-      @messages.each do |shouter, message|
+      @shouts.each do |shouter, shouts|
         distance = @locations[listener].distance_from(@locations[shouter])
         if (distance < MESSAGE_RANGE)
-          result[shouter] = message
+          shoutsHeard[shouter] = shouts
         end
       end
 
-      result
+      shoutsHeard
     end
 end
