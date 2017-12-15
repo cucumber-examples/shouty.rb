@@ -1,0 +1,10 @@
+version: '2'
+services:
+  ruby:
+    build:
+      context: .
+    working_dir: /app
+    volumes:
+      - .:/app:delegated
+    entrypoint:
+      - /bin/bash
