@@ -1,6 +1,6 @@
 Feature: Hear Shout
 
-  Shouts have a range of approximately 1000m
+  Shouts have a range up to 1000m
 
   Scenario: In range shout is heard
     Given Lucy is at 0, 0
