@@ -36,4 +36,4 @@ jobs:
     - name: Publish documentation
       run: curl --verbose -L -X PUT "https://b1f2yk58d8.execute-api.eu-west-3.amazonaws.com/api/repository/$CUCUMBER_REPORTS_TOKEN" --upload-file results.ndjson
       env:
-        CUCUMBER_REPORTS_TOKEN: ${{ secrets.CUCUMBER_REPORTS_TOKEN }}
+        CUCUMBER_PUBLISH_TOKEN: ${{ secrets.CUCUMBER_PUBLISH_TOKEN }}
