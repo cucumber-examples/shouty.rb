@@ -1,5 +1,6 @@
 require_relative './coordinate'
 
+
 class Shouty
     MESSAGE_RANGE = 1000
 
